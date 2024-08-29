@@ -1,0 +1,21 @@
+.cells {
+  display: inline-block;
+  border: solid;
+  margin: 1rem;
+  font-size: 2rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.selected {
+  background-color: red;
+}
+
+.cells2 {
+  display: inline-block;
+  border: solid;
+  margin: 1rem;
+  font-size: 2rem;
+  width: 2rem;
+  text-align: center;
+}
