@@ -41,22 +41,29 @@ const createCellsPlayer = function () {
 const getRandomNumber = function () {
   const randomNumberButton = document.getElementById("rollBtn");
   randomNumberButton.onclick = function () {
-    //far si che confronti i numeri e non gli indici
     const randomNum = Math.floor(Math.random() * 76) + 1;
-    for (let i = 0; i < tombolaCellsArray.length; i++) {
-      if (randomNum === tombolaCellsArray[i]) {
+    const selectedCell = document.getElementsByClassName("cells");
+
+    for (let i = 0; i < selectedCell.length; i++) {
+      const cellNumber = parseInt(selectedCell[i].innerText);
+      if (randomNum === cellNumber) {
         //devo evidenziare la cella del numero quindi il div della cella
-        const selectedCell = document.getElementsByClassName("cells");
+
         selectedCell[i].className = selectedCell[i].className + " selected";
+        break;
       }
     }
-    //il ciclo per la tabella dei giocatori
 
-    for (let j = 0; j < tombolaCellsArray2.length; j++) {
-      if (randomNum === tombolaCellsArray2[j]) {
+    //il ciclo per la tabella dei giocatori
+    const selectedCell2 = document.getElementsByClassName("cells2");
+
+    for (let j = 0; j < selectedCell2.length; j++) {
+      const cellNum = parseInt(selectedCell2[j].innerText);
+      if (randomNum === cellNum) {
         //devo evidenziare la cella del numero quindi il div della cella
-        const selectedCell = document.getElementsByClassName("cells2");
-        selectedCell[j].className = selectedCell[j].className + " selected";
+
+        selectedCell2[j].className = selectedCell2[j].className + " selected";
+        break;
       }
     }
 

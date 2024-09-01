@@ -1,3 +1,7 @@
+.selected {
+  background-color: red !important;
+}
+
 .cells {
   display: inline-block;
   border: solid;
@@ -5,10 +9,8 @@
   font-size: 2rem;
   width: 2rem;
   text-align: center;
-}
-
-.selected {
-  background-color: red;
+  border-radius: 50%;
+  background-color: lightgoldenrodyellow;
 }
 
 .cells2 {
@@ -18,4 +20,15 @@
   font-size: 2rem;
   width: 2rem;
   text-align: center;
+  border-radius: 50%;
+  background-color: lightgoldenrodyellow;
+}
+
+.titolo {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url();
+}
+#tombolaCells {
+  border: solid, black;
 }
