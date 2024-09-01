@@ -1,39 +1,60 @@
-//array vuoto dove pushare le celle con i numeri da 1 a 76
-const tombolaCellsArray = [];
-const tombolaCellsArray2 = [];
-
-//funzione che crea celle (div)
-const createCells = function () {
+//funzione che crea il tabellone principale
+const createTabellone = function () {
   for (let i = 1; i < 77; i++) {
-    const newDiv = document.createElement("div");
-    const divOfDivs = document.getElementById("tombolaCells");
-    divOfDivs.appendChild(newDiv);
-    newDiv.innerText = i;
-    newDiv.className = "cells";
-    tombolaCellsArray.push([i]);
+    const caselle = document.createElement("div");
+    const tabellone = document.getElementById("tabellone");
+    tabellone.appendChild(caselle);
+    caselle.innerText = i;
+    caselle.className = "cells";
+    tabellone.appendChild(caselle);
   }
 };
 
-//funziona che crea celle del giocatore
-const createCellsPlayer = function () {
+//funziona che crea cartelle del giocatore
+let selectedCount = 0;
+const createCartellaPlayer = function (index) {
   const usedNumbers = [];
+  const contenitoreCartelle = document.getElementById("chooseCartella");
+  const cartella = document.createElement("div");
+  cartella.className = "cartella";
+  contenitoreCartelle.appendChild(cartella);
+
   for (let i = 1; i < 25; i++) {
-    const newDiv2 = document.createElement("div");
-    const divOfDivs2 = document.getElementById("tombolaCellsPlayer");
-    //numeri random che non si ripetono
+    const casellina = document.createElement("div");
+
     let randomNumCell;
     do {
       randomNumCell = Math.floor(Math.random() * 76) + 1;
     } while (usedNumbers.includes(randomNumCell));
 
     usedNumbers.push(randomNumCell);
-    divOfDivs2.appendChild(newDiv2);
-    tombolaCellsArray2.push(randomNumCell);
-    //dobbiamo pushare i numeri random da 1 a 76 nelle 24 celle
-
-    newDiv2.innerText = randomNumCell;
-    newDiv2.className = "cells2";
+    cartella.appendChild(casellina);
+    casellina.innerText = randomNumCell;
+    casellina.className = "cells2";
   }
+  //cartelle che si scelgono
+
+  cartella.addEventListener("click", function (e) {
+    selectedCount++;
+    const cartelleSceltaDalGiocatore = document.getElementById("cartelleScelte");
+    cartelleSceltaDalGiocatore.appendChild(cartella);
+
+    //nascondo il contenitore scegliCartella e il suo titolo
+    const h2 = document.getElementsByTagName("h2");
+    console.log(selectedCount);
+    if (selectedCount === 3) {
+      contenitoreCartelle.style.display = "none";
+      h2[0].style.display = "none";
+      alert("START");
+    }
+
+    //
+    // for (let i = 0; i < contenitoreCartelle.length; i++) {
+    //   if (i <= contenitoreCartelle[2]) contenitoreCartelle.style.display = "none";
+    //
+    //   break;
+    // }
+  });
 };
 
 //funzione al click del tasto fai uscire il numero random e seleziona la cella del numero corrispondente
@@ -47,34 +68,28 @@ const getRandomNumber = function () {
     for (let i = 0; i < selectedCell.length; i++) {
       const cellNumber = parseInt(selectedCell[i].innerText);
       if (randomNum === cellNumber) {
-        //devo evidenziare la cella del numero quindi il div della cella
-
         selectedCell[i].className = selectedCell[i].className + " selected";
         break;
       }
     }
 
-    //il ciclo per la tabella dei giocatori
     const selectedCell2 = document.getElementsByClassName("cells2");
 
     for (let j = 0; j < selectedCell2.length; j++) {
       const cellNum = parseInt(selectedCell2[j].innerText);
       if (randomNum === cellNum) {
-        //devo evidenziare la cella del numero quindi il div della cella
-
         selectedCell2[j].className = selectedCell2[j].className + " selected";
-        break;
       }
     }
 
     console.log(randomNum);
   };
 };
-getRandomNumber();
 
-//all'avvio svolgi queste funzioni
 window.onload = () => {
-  //crea celle con i numeri
-  createCells();
-  createCellsPlayer();
+  getRandomNumber();
+  createTabellone();
+  for (let i = 0; i < 6; i++) {
+    createCartellaPlayer(i);
+  }
 };

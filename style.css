@@ -7,7 +7,7 @@
   border: solid;
   margin: 1rem;
   font-size: 2rem;
-  width: 2rem;
+  width: 3rem;
   text-align: center;
   border-radius: 50%;
   background-color: lightgoldenrodyellow;
@@ -18,7 +18,7 @@
   border: solid;
   margin: 1rem;
   font-size: 2rem;
-  width: 2rem;
+  width: 3rem;
   text-align: center;
   border-radius: 50%;
   background-color: lightgoldenrodyellow;
@@ -26,9 +26,46 @@
 
 .titolo {
   text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: cursive;
+  font-size: larger;
   background-image: url();
 }
 #tombolaCells {
   border: solid, black;
+}
+
+#chooseCartella {
+  /* text-align: center; */
+}
+
+#cartelleScelte {
+  text-align: center;
+}
+
+.cartella {
+  border: solid;
+  width: 16%;
+  display: inline-block;
+  margin: 0.2rem;
+}
+#cartelleScelte .cartella {
+  width: 32%;
+}
+
+#rollBtn {
+  height: 8rem;
+  width: 9rem;
+  border-radius: 50%;
+  background-color: darkslategray;
+  font-family: cursive;
+  font-size: xxx-large;
+  border: solid;
+}
+#rollBtnContainer {
+  margin: 3rem;
+  margin-left: 46%;
+}
+h3 {
+  text-align: center;
+  font-size: xx-large;
 }
